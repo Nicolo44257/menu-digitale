@@ -144,4 +144,28 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
         });
     });
+    // Selettori banner, overlay e pulsanti
+const aperitivoBanner = document.getElementById('aperitivo-button');
+const overlay = document.getElementById('overlay');
+const closePopupBtn = document.getElementById('close-popup');
+
+// Quando clicco sul banner, rendo visibile l'overlay (e quindi il popup)
+aperitivoBanner.addEventListener('click', function() {
+  overlay.classList.add('active');
+});
+
+// Quando clicco sulla X, chiudo tutto
+closePopupBtn.addEventListener('click', function() {
+  overlay.classList.remove('active');
+});
+
+// BONUS: se clicco all'esterno del popup, lo chiudo
+overlay.addEventListener('click', function(e) {
+  // Se il click è direttamente sull'overlay (e non sul contenuto interno), nascondo
+  if (e.target === overlay) {
+    overlay.classList.remove('active');
+  }
+});
+
+    
 });
