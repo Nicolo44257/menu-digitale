@@ -537,5 +537,105 @@ footer::before {
 .social-header-fixed a:hover {
   color: var(--primary-color);
 }
+/* Banner in alto a sinistra */
+.aperitivo-banner {
+  position: absolute;     /* oppure fixed se vuoi che resti anche durante lo scroll */
+  top: 20px;              /* ← QUI imposti l'altezza da sopra */
+  left: 20px;             /* ← distanza dal bordo sinistro dello schermo */
+  z-index: 9999;
+  background-color: #e4002b;
+  padding: 2px 8px;       /* più piccolo per mobile */
+  border-radius: 20px;    /* spigoli arrotondati come richiesto */
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
 
+.aperitivo-banner span {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+
+
+
+
+
+/* Overlay scuro che compare quando il popup è attivo */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5); /* sfondo scuro semi-trasparente */
+  backdrop-filter: blur(3px);  /* effetto di sfocatura */
+  display: none;              /* di base è nascosto */
+  align-items: center;        /* centrare il popup */
+  justify-content: center;    /* centrare il popup */
+  z-index: 10000;
+  opacity: 0;                 /* per effetto fade-in */
+  transition: opacity 0.4s ease; /* transizione morbida */
+}
+
+.overlay.active {
+  display: flex;   /* quando attivo, diventa flex container */
+  opacity: 1;      /* fade-in */
+}
+
+/* La finestra popup vera e propria */
+.aperitivo-popup {
+  background-color: #fff;
+  border: 2px solid #e4002b;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px; /* dimensione massima */
+  padding: 20px;
+  position: relative;
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+/* Quando l'overlay è attivo, facciamo apparire il popup con un piccolo "scorrimento" */
+.overlay.active .aperitivo-popup {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Pulsante di chiusura (la X) */
+.close-popup {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: bold;
+  color: #e4002b;
+}
+
+.close-popup:hover {
+  color: #c10026;
+}
+
+/* Testo nella finestra */
+.aperitivo-popup p {
+  color: #333;
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.aperitivo-popup strong {
+  color: #e4002b;
+}
+
+.aperitivo-popup em {
+  display: block;
+  margin-top: 10px;
+  font-style: italic;
+  color: #666;
+}
 
